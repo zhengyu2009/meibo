@@ -45,7 +45,7 @@
     }
     if (!isset($age) || ($age==="")) {
         $errors[] = "年齢を入力してください。";
-    }    elseif(!ctype_digit($age)){
+    }    elseif(!ctype_digit(strval($age))){
         $errors[]="年齢に整数を入力してください。";
     }
     if (!isset($enterYM) || ($enterYM==="")){
@@ -80,11 +80,11 @@
 
 
         echo "<ul style='list-style:none;'>";
-        echo "<li>氏名：". $name ."</li><br>";
-        echo "<li>年齢：". $age ."</li><br>";
-        echo "<li>性別：". $gender ."</li><br>";
-        echo "<li>入学年月：". $enterYM ."</li><br>";
-        echo "<li>卒業年月：". $sotsuYM ."</li><br>";
+        echo "<li>氏名：". htmlspecialchars($name) ."</li><br>";
+        echo "<li>年齢：". htmlspecialchars($age) ."</li><br>";
+        echo "<li>性別：". htmlspecialchars($gender) ."</li><br>";
+        echo "<li>入学年月：". htmlspecialchars($enterYM) ."</li><br>";
+        echo "<li>卒業年月：". htmlspecialchars($sotsuYM) ."</li><br>";
         echo "</ul>";
         echo "<hr>";
         echo "この内容で登録しました。<br>";
