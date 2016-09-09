@@ -66,10 +66,18 @@
         echo "<a href='meibo_input.php'>戻る</a>";
         // exit();
     }
+//編集画面から
+    elseif(isset($_GET["stuID"])){
+        $sql ="UPDATE students (name, age, gender, enterYM, sotsuYM) VALUES
+    ('$name','$age','$gender','$enterYM','$sotsuYM')";
+        //プリペアドステートメントを作る
+        $stm=$pdo->prepare($sql);
+        //SQL文を実行する
+        $stm->execute();
+    }
+
 //正常時登録
     else{
-
-
         //sql文を作る（新規レコード追加）
         $sql ="INSERT students (name, age, gender, enterYM, sotsuYM) VALUES
     ('$name','$age','$gender','$enterYM','$sotsuYM')";

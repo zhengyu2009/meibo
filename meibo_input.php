@@ -17,7 +17,35 @@ try{
     $err .= $e->getMessage();
     exit($err);
 }
+
+
+
+////////////////////
+
+
+if (isset($_GET["stuID"])) {
+    $stuID =$_GET["stuID"];
+    $sql = "SELECT * FROM students WHERE stuID =$stuID";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    $result=$stm->fetchAll(PDO::FETCH_ASSOC);
+
+    $name = $result[0]["name"];
+    $age = $result[0]["age"];
+    $gender = $result[0]["gender"];
+    $enterYM = $result[0]["enterYM"];
+    $sotsuYM = $result[0]["sotsuYM"];
+
+} else {
+    $name = "";
+    $age = "";
+    $gender = "";
+    $enterYM = "";
+    $sotsuYM = "";
+}
+///////////////////
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -30,21 +58,21 @@ try{
     <p>登録する内容を入力してください。</p>
     <form method="post" action="meibo_check_input.php">
 
+
         生徒名：
-        <input type="text" name="name" placeholder="名前を入れてください。"><br>
+        <input type="text" name="name" value="<?php echo $name ?>" placeholder="<名前を入れてください。"><br>
         年齢：
-        <input type="number" name="age" placeholder="半角数字"><br>
+        <input type="number" name="age"  value="<?php echo $age ?>" placeholder="半角数字"><br>
         性別：
         <select name="gender">
             <option value="男性">男性</option>
             <option value="女性">女性</option>
         </select><br>
         入学年月：
-        <input type="date" name="enterYM"><br>
+        <input type="date" name="enterYM" value="<?php echo $enterYM ?>"><br>
         卒業年月：
-        <input type="date" name="sotsuYM"><br>
+        <input type="date" name="sotsuYM" value="<?php echo $sotsuYM ?>"><br>
         <input type="submit" value="登録"><br>
-
     </form>
 </div>
 </body>
