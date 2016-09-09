@@ -55,9 +55,9 @@
         $final1 = $_POST["final1"];
         $final2 = $_POST["final2"];
         //全選択のSQL
-        $sqlFirst = "SELECT students.name, students.age, students.gender, students.enterYM, students.sotsuYM, subject.subject, subject.teacher, score.middle, score.final
-        FROM students, subject, score
-        WHERE score.stuID = students.stuID AND score.subID = subject.subID AND students.isDeleted = 0";
+        $sqlFirst = "SELECT students.name, students.age, students.gender, students.enterYM, students.sotsuYM, course.subject, course.teacher, score.middle, score.final
+        FROM students, course, score
+        WHERE score.stuID = students.stuID AND score.subID = course.subID AND students.isDeleted = 0";
         //検索条件。if(isset)チェックでsql文をどんどん足していく。
         if (!(($_POST["name"]==""))) {
             $sql1 = " AND students.name LIKE(:name)";

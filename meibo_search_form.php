@@ -14,7 +14,7 @@ try{
     //取り出す検索フォーム用の値をDBから取得する。
     //科目テーブルの科目名　cource.subject
     //科目テーブルの教師名 cource.teacher
-    $sql = "SELECT subID, subject, teacher FROM subject";
+    $sql = "SELECT subID, subject, teacher FROM course";
     $stm = $pdo->prepare($sql);
     $stm->execute();
     $subject = $stm->fetchAll(PDO::FETCH_ASSOC);
