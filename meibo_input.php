@@ -3,7 +3,7 @@
 $user='meibo';
 $password = 'Aug.2016';
 $dbName = 'meibo';
-$host = 'localhost:3306';
+$host = '192.168.1.201:3306';
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
 try{
@@ -36,8 +36,8 @@ try{
         <input type="number" name="age" placeholder="半角数字"><br>
         性別：
         <select name="gender">
-            <option value="男">男性</option>
-            <option value="女">女性</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
         </select><br>
         入学年月：
         <input type="date" name="enterYM"><br>

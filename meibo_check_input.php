@@ -12,7 +12,7 @@
     $user='meibo';
     $password = 'Aug.2016';
     $dbName = 'meibo';
-    $host = 'localhost:3306';
+    $host = '192.168.1.201:3306';
     $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
     $name=$_POST['name'];
@@ -72,7 +72,7 @@
 
         //sql文を作る（新規レコード追加）
         $sql ="INSERT students (name, age, gender, enterYM, sotsuYM) VALUES
-    ('$name','$age','$gender','enterYM','sotsuYM')";
+    ('$name','$age','$gender','$enterYM','$sotsuYM')";
         //プリペアドステートメントを作る
         $stm=$pdo->prepare($sql);
         //SQL文を実行する
