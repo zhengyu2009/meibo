@@ -23,8 +23,8 @@
     $gobackURL = "meibo_search_form.php";
     //エラー処理
 
-    $user='testuser';
-    $password = 'pw4testuser';
+    $user='meibo';
+    $password = 'Aug.2016';
     $dbName = 'meibo';
     $host = '192.168.1.201:3306';
     $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
