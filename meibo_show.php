@@ -24,10 +24,15 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <style>
 
+    </style>
 </head>
 <body>
+<div id="wrapper">
+<h1>学生一覧</h1>
 <table border="1">
+    <form
     <tr>
         <th>ID</th>
         <th>名前</th>
@@ -35,8 +40,12 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         <th>性別</th>
         <th>入学年月</th>
         <th>卒業年月</th>
+        <th>操作</th>
     </tr>
     <?php
+    if (empty($result)) {
+        echo "登録されている学生はいません。<br>";
+    }
     foreach ($result as $row) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['stuID']) . "</td>";
@@ -44,9 +53,13 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         echo "<td>" . htmlspecialchars($row['age']) . "</td>";
         echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
         echo "<td>" . htmlspecialchars($row['enterYM']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['sotsuYM']) . "</td></tr>";
+        echo "<td>" . htmlspecialchars($row['sotsuYM']) . "</td>";
+        echo "<td><a href='Meibo_input.php?stuID=" .  htmlspecialchars($row['stuID']) . "'>編集|</a>";
+        echo "<a href='meibo_delete.php?stuID=" .  htmlspecialchars($row['stuID']) . "'>削除</a></td>";
+        echo "</tr>";
     }
     ?>
 </table>
+</div>
 </body>
 </html>
