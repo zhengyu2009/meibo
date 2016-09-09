@@ -46,7 +46,7 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
     <?php
     if (empty($result)) {
         echo "登録されている学生はいません。<br>";
-        echo "<a href='Meibo_input.php'>新規登録</a>";
+        echo "<a href='meibo_input.php'>新規登録</a>";
     } else {
         foreach ($result as $row) {
             echo "<tr>";
@@ -56,29 +56,17 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
             echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
             echo "<td>" . htmlspecialchars($row['enterYM']) . "</td>";
             echo "<td>" . htmlspecialchars($row['sotsuYM']) . "</td>";
-            echo "<td><a href='Meibo_input.php?stuID=" . htmlspecialchars($row['stuID']) . "'>編集|</a>";
-//            echo "<a href='meibo_delete.php?stuID=" . htmlspecialchars($row['stuID']) . "&name=" . rawurlencode(htmlspecialchars($row['name'])) . "' onclick='delConfirm()'>削除</a></td>";
+            echo "<td><a href='meibo_input.php?stuID=" . htmlspecialchars($row['stuID']) . "'>編集|</a>";
+            echo "<a href='meibo_delete.php?stuID=" . htmlspecialchars($row['stuID']) . "&name=" . rawurlencode(htmlspecialchars($row['name'])) . "' onclick='javascript:return confirm(\"本当に削除しますか？\")'>削除</a></td>";
 //            echo "<a href='meibo_delete.php?stuID=" . htmlspecialchars($row['stuID']) . "&name=" . rawurlencode(htmlspecialchars($row['name'])) . "'>削除</a></td>";
-            echo "<a herf='' onclick='delConfirm()'>削除</a></td>";
+//            echo "<a herf='' onclick='delConfirm()'>削除</a></td>";
             echo "</tr>";
         }
     }
     ?>
 </table>
+    <a href="index.html">Homeに戻る</a>
 </div>
-<script>
-    function delConfirm() {
-        isDel = confirm("本当に削除しますか？");
-        if (!isDel) {
-            console.log("<?php echo 'キャンセル';?>");
-            return false;
-        } else {
-//            location.href("meibo_delete.php?stuID=<php? echo htmlspecialchars($row['stuID']);?>");
-            console.log("<?php echo '削除する';?>");
-            stuID = "<?php echo htmlspecialchars($row['stuID']);?>";
-            location.href="meibo_delete.php?stuID=" + stuID;
-        }
-    }
-</script>
+
 </body>
 </html>
