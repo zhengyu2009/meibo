@@ -3,7 +3,7 @@
 $user='testuser';
 $password = 'pw4testuser';
 $dbName = 'meibo';
-$host = 'localhost:3306';
+$host = '192.168.1.201:3306';
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
 try{
@@ -57,7 +57,7 @@ try{
     <div id="form">
         <h3 style="text-align: center">名簿検索</h3>
         <p>検索する内容を入力してください。</p>
-    <form method="post" action="meibo_search_result.php">
+    <form method="post" action="meibo_search_confirm.php">
         生徒名：
         <input type="text" name="name" placeholder="名前を入れてください。"><br>
         年齢：

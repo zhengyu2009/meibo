@@ -26,7 +26,7 @@
     $user='testuser';
     $password = 'pw4testuser';
     $dbName = 'meibo';
-    $host = 'localhost:3306';
+    $host = '192.168.1.201:3306';
     $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
     try {
