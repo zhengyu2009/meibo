@@ -2,7 +2,7 @@
 require_once "sqlConn.php";
 $error = [];
 $stuID = htmlspecialchars($_GET["stuID"]);
-$name = rawurldecode(htmlspecialchars($_GET["name"]));
+//$name = rawurldecode(htmlspecialchars($_GET["name"]));
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ $name = rawurldecode(htmlspecialchars($_GET["name"]));
 <div id="wrapper">
 
     <?php
-    if (!empty($stuID) && !empty($name)) {
+    if (!empty($stuID)) {
         try {
             $pdo->beginTransaction();
             $sql1 = "DELETE FROM students WHERE stuID={$stuID}";
@@ -23,8 +23,9 @@ $name = rawurldecode(htmlspecialchars($_GET["name"]));
 
             $del1 = $pdo->prepare($sql1);
             $del2 = $pdo->prepare($sql2);
-            $del1->execute();
             $del2->execute();
+            $del1->execute();
+
             $pdo->commit();
             echo "削除成功しました。<br>";
             echo "<a href='meibo_show.php'>一覧に戻ります</a>";
