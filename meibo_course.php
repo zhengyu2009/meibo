@@ -66,15 +66,15 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
     } elseif (!isset($_POST["teacher"]) || ($_POST["teacher"] === "")){
             $errors[] = "名前を入力してください。";
     } else {
-        echo "koko";
+//        echo "koko";
         $subject = $_POST["subject"];
         $teacher = $_POST["teacher"];
-        echo $subject, $teacher;
-        $sql = "INSERT INTO course (subject, teacher) VALUES ($subject, $teacher)";
+//        echo $subject, $teacher;
+        $sql = "INSERT INTO course (subject, teacher) VALUES ('$subject', '$teacher')";
         $stm = $pdo->prepare($sql);
-        echo $stm->execute();
+        $stm->execute();
     }
-    print_r($errors);
+//    print_r($errors);
     ?>
 </table>
 </div>
